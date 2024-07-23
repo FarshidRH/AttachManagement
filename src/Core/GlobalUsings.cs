@@ -1,1 +1,1 @@
-﻿
+﻿global using AttachManagement.Core.Common;
