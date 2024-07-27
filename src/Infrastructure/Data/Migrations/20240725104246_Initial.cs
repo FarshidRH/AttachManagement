@@ -36,6 +36,7 @@ namespace AttachManagement.Infrastructure.Data.Migrations
                 {
                     id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     file_name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    file_type = table.Column<string>(type: "varchar(8)", unicode: false, maxLength: 8, nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", maxLength: -1, nullable: true),
                     created_date_utc = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     modified_date_utc = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),

@@ -18,6 +18,13 @@ internal class AttachmentConfiguration : IEntityTypeConfiguration<Attachment>
             .IsRequired()
             .HasMaxLength(128);
 
+        builder.Property(x => x.FileType)
+            .HasColumnName("file_type")
+            .IsRequired()
+            .HasConversion<string>()
+            .HasMaxLength(8)
+            .IsUnicode(false);
+
         builder.Property(x => x.Description)
             .HasColumnName("description")
             .HasMaxLength(-1);

@@ -210,6 +210,9 @@ csharp_preserve_single_line_statements = true
 # IDE0002: Simplify Member Access
 dotnet_diagnostic.IDE0002.severity = none
 
+# MA0004: Use Task.ConfigureAwait
+dotnet_diagnostic.MA0004.severity = none
+
 [*.{cs,vb}]
 
 # Naming rules

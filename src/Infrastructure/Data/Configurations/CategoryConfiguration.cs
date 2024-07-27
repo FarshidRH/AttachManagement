@@ -9,10 +9,9 @@ internal class CategoryConfiguration : IEntityTypeConfiguration<Category>
         builder.ToTable("category");
 
         builder.Property<int>("id");
-        builder.Property<int?>("parent_id");
 
+        builder.Property<int?>("parent_id");
         builder.HasMany<Category>("_subCategories").WithOne().HasForeignKey("parent_id");
-        builder.Navigation("_subCategories").AutoInclude();
 
         builder.Property(x => x.Title)
             .HasColumnName("title")

@@ -14,35 +14,35 @@ public sealed class Category
 
     public static Category Create(string title) => new(title);
 
-    public void AddSubCategory(Category category)
+    public Category AddSubCategory(string categoryTitle)
     {
-        if (category == this)
-        {
-            throw new InvalidOperationException("The parent category and the child category are the same.");
-        }
+        var newCategory = Category.Create(categoryTitle);
+        _subCategories.Add(newCategory);
 
-        if (_subCategories.Contains(category))
-        {
-            throw new InvalidOperationException("This category already exists in the children of the parent category.");
-        }
-
-        _subCategories.Add(category);
+        return newCategory;
     }
 
-    public void AttachFile(string fileName, string? description)
+    public Attachment AttachFile(string fileName, FileType fileType, string? description = null)
     {
         if (HasSubCategories())
         {
             throw new InvalidOperationException("The attachment cannot be added to a category that has children.");
         }
 
-        var newAttach = Attachment.Create(fileName, description);
+        var newAttach = Attachment.Create(fileName, fileType, description);
         _attachments.Add(newAttach);
+
+        return newAttach;
     }
 
-    public bool HasSubCategories() => _subCategories.Count != 0;
+    public void Modify(string title)
+    {
+        Title = title ?? throw new ArgumentNullException(nameof(title));
+    }
 
-    public string Title { get; }
+    public bool HasSubCategories() => _subCategories.Any();
+
+    public string Title { get; private set; }
 
     public IReadOnlyCollection<Category> SubCategories => _subCategories.AsReadOnly();
 

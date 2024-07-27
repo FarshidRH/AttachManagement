@@ -44,6 +44,13 @@ namespace AttachManagement.Infrastructure.Data.Migrations
                         .HasColumnType("nvarchar(128)")
                         .HasColumnName("file_name");
 
+                    b.Property<string>("FileType")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(8)")
+                        .HasColumnName("file_type");
+
                     b.Property<DateTimeOffset?>("LastModifiedOnUtc")
                         .HasColumnType("datetimeoffset")
                         .HasColumnName("modified_date_utc");
